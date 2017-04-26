@@ -470,7 +470,10 @@ header .logo img {
   .prdLst .detailWrap .prdPrice {
     padding-top: 14px;
   }
-  .prdLst .detailWrap .prdPrice a {
+  .prdPrice {
+    padding-top: 14px;
+  }
+  .prdPrice a {
     font-size: 11px;
     width: 100%;
   }
