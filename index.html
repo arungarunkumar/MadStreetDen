@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" ng-app="angularTable">
+    <head>
+        <meta charset="utf-8">
+        <title>Mad Street Den</title>
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/icon">
+        <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+        <link href="assets/style/build/main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="siteWrapper">
+            <header>
+                <div class="wrap">
+                    <a href="#" class="logo"><img src="assets/images/logo.jpg" alt=""></a>
+                    <div class="sortWrap">
+                        <div class="">
+                            <label >categories</label>
+        					<!--<input type="text" ng-model="search" class="form-control" placeholder="Search">-->
+                            <select ng-model="search" class="form-control">
+                                <!--<option ng-repeat="products in products | orderBy:Id" value="{{products.cat}}">{{products.cat}}</option>-->
+                                <option value="" disabled>Sort By categories</option>
+                                <option value="jeans">jeans</option>
+                                <option value="sarees">sarees</option>
+                                <option value="pants">pants</option>
+                                <option value="tops">tops</option>
+                                <option value="tshirts">tshirts</option>
+                           </select>
+                        </div>
+                        <div class="">
+                            <label >sort By</label>
+                            <select ng-model="sortKey"  class="form-control">
+                                <option value="" disabled>Sort By Price & Score</option>
+                                <option value="price">Price (low to high)</option>
+                                <option value="-price">Price (high to low)</option>
+                                <option value="score">Score (low to high)</option>
+                                <option value="-score">Score (High to low)</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </header>
+            <div class="productWrapper">
+                <div class="wrap" ng-controller="listdata">
+                     <div class="mainLoader" ng-show="loaded">
+                         <span></span>
+                     </div>
+                     <ul class="prdLst">
+                         <li dir-paginate="products in products|orderBy:sortKey:reverse|filter:search|itemsPerPage:9" ng-cloak>
+                             <figure>
+                                 <span class="loader">
+                                     <i></i>
+                                 </span>
+                                 <img src="{{ products.img }}" alt="{{ products.img }}" />
+                             </figure>
+                             <!--{{ products.id }} <br />-->
+                             <div class="detailWrap">
+                                 <h1>
+                                     Category: <span>{{ products.cat }}</span>
+                                 </h1>
+                                 <div class="prdDetail">
+                                     <h2>{{ products.name }}</h2>
+                                     <div class="score">
+                                         <span><i style="width: {{(products.score * 100 | number:0 | maxhundred)}}px"></i></span>
+                                     </div>
+                                 </div>
+                                 <div class="prdPrice">
+                                     <p>
+                                         &#8377;{{ products.price }}
+                                     </p>
+                                     <a href="{{ products.url }}" target="_blank" class="btn buyNow">
+                                         <i class="cartIcon"></i>
+                                         <span>Buy Now</span>
+                                     </a>
+                                 </div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+                 <dir-pagination-controls max-size="6" boundary-links="true" > </dir-pagination-controls>
+             </div>
+         </div>
+     </div>
+     <script src="assets/lib/angular/angular.js"></script>
+     <script src="assets/lib/dirPagination.js"></script>
+     <script src="assets/app/app.js"></script>
+ </body>
+</html>
