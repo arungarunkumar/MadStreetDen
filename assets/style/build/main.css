@@ -284,7 +284,7 @@ header .logo img {
 /* End Off */
 /* Product Block */
 .productWrapper {
-  padding: 56px 0;
+  padding: 82px 0 56px;
 }
 .prdLst {
   list-style: none;
@@ -435,6 +435,9 @@ header .logo img {
   header .logo {
     display: inline-block;
     margin-top: 4px;
+  }
+  .productWrapper {
+    padding-top: 72px;
   }
   .sortWrap {
     float: right;
